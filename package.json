@@ -1,0 +1,21 @@
+{
+  "name": "jstruct",
+  "version": "0.0.1",
+  "description": "Quick and easy JSON transformations.",
+  "homepage": "https://github.com/sebinsua/jstruct",
+  "keywords": [
+    "util",
+    "representation",
+    "tranformation",
+    "json"
+  ],
+  "author": "Seb Insua <me@sebinsua.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sebinsua/jstruct.git"
+  },
+  "main": "index.js",
+  "devDependencies": {
+    "mocha": "^2.2.4"
+  }
+}
