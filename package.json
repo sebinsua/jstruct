@@ -10,12 +10,23 @@
     "json"
   ],
   "author": "Seb Insua <me@sebinsua.com>",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/sebinsua/jstruct.git"
   },
   "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run unit",
+    "lint": "./node_modules/.bin/eslint .",
+    "unit": "./node_modules/.bin/mocha test/spec.*.js --require test/helpers.js"
+  },
+  "dependencies": {
+    "ramda": "^0.13.0"
+  },
   "devDependencies": {
+    "chai": "^2.3.0",
+    "eslint": "^0.21.0",
     "mocha": "^2.2.4"
   }
 }

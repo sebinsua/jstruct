@@ -1,24 +1,29 @@
 # jstruct [![Build Status](https://travis-ci.org/sebinsua/jstruct.png)](https://travis-ci.org/sebinsua/jstruct)
 > :bulb: Quick and easy JSON transformations.
 
-Jstruct allows quick and easy transformation between data structures using a declarative json structure.
+Jstruct allows quick and easy JSON transformations through the use of a declarative JSON DSL.
 
-Note
+```javascript
+import j from 'jstruct';
+
+getAccount().then(j({
+  id: 'account/id',
+  name: 'account/name',
+  lastPaymentAmount: 'account/paymentHistory[0]/amount',  
+}));
+// ->
+// {
+//   id: 7,
+//   name: 'bob',
+//   lastPaymentAmount: '£10'
+// }
+
+```
+
+Why?
 ----
 
-Currently jstruct is just a proof-of-concept and requires a lot more work to flesh out the idea before I even consider it alpha.
-
-The most recent work on this is [here](https://gist.github.com/sebinsua/1d232d7ca210865f80ab).
-
-TODO
-----
-
-- [ ] Instead of `sel()`, `transform()` might be a better function name. Or alias. Maybe flipped arguments.
-
-Premise
--------
-
-Converting between different data types in JavaScript is easier than many languages because of the concise and declarative JSON. However, currently there are only two approaches: an imperative one or a whizzbang functional library one.
+Converting between different data types in JavaScript is easier than many languages because of the concise and declarative JSON. However, currently both imperative and functional approaches create very verbose code.
 
 For example, given some data such as:
 
@@ -102,35 +107,4 @@ var newData = {
 };
 ```
 
-I propose a simpler way of defining a transformation between one json structure and another in json itself.
-
-For example, given:
-
-```javascript
-{
-  "id": "person/id",
-  "name": "person/name",
-  "lastPaymentAmount": "person/paymentHistory[0]/amount",
-  "taskIds": "person/tasks[*]/id",
-  "taskIdsWithOptionalData": j.sel("person/tasks[:hasOptionalData]/id", { hasOptionalData: has('optional') }),
-  "activities": {
-    "person/interests[*]/type": "person/interests[k]/name"
-  }
-}
-```
-
-Which would then output the desired data:
-
-```json
-{
-  "id": 7,
-  "name": "bob",
-  "lastPaymentAmount": "£10",
-  "taskIds": [11, 23, 99],
-  "taskIdsWithOptionalData": [99],
-  "activities": {
-    "sport": ["football", "rugby", "swimming"],
-    "entertainment": ["tv"]
-  }
-}
-```
+Both of these approaches are time-consuming to write and there is no need for this to be the case.
