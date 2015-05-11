@@ -5,9 +5,15 @@
   "homepage": "https://github.com/sebinsua/jstruct",
   "keywords": [
     "util",
+    "map",
+    "functional",
     "representation",
     "tranformation",
-    "json"
+    "json",
+    "ramda",
+    "pluck",
+    "pick",
+    "pointer"
   ],
   "author": "Seb Insua <me@sebinsua.com>",
   "license": "MIT",
