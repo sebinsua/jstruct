@@ -12,7 +12,7 @@ function selectorToPath(selector, separator) {
     separator = separator || '/';
 
     // We need to handle square bracket array access.
-    selector = selector.replace(/\[(\w*)\]/g, separator + '$1');
+    selector = R.replace(/\[(\w*)\]/g, separator + '$1', selector);
 
     return selector.split(separator).filter(R.identity);
 }

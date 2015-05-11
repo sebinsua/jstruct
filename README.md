@@ -4,27 +4,30 @@
 Jstruct allows quick and easy JSON transformations through the use of a declarative JSON DSL.
 
 ```javascript
-import j from 'jstruct';
+import j, { sel } from 'jstruct';
+import { curry } from 'ramda';
+
+const prefix = curry((prefix, str) => prefix + str);
 
 getAccount().then(j({
   id: 'account/id',
   name: 'account/name',
-  lastPaymentAmount: 'account/paymentHistory[0]/amount',
-  hasAddress: j.sel.exists('account/address')
+  hasAddress: sel.exists('account/address'),
+  lastPaymentAmount: sel('account/paymentHistory[0]/amount', prefix('£'))
 }));
 // ->
 // {
 //   id: 7,
 //   name: 'bob',
-//   lastPaymentAmount: '£10',
-//   hasAddress: true
+//   hasAddress: true,
+//   lastPaymentAmount: '£10'
 // }
 
 ```
 
 ## Why?
 
-Converting between different data types in JavaScript is easier than many languages because of the concise and declarative JSON. However, currently [both imperative and functional approaches create unnecessarily verbose code](https://github.com/sebinsua/jstruct/wiki/Premise).
+Converting between different data representations in JavaScript is easier than many languages because of the concise and declarative JSON. However, currently [both imperative and functional approaches create unnecessarily verbose code](https://github.com/sebinsua/jstruct/wiki/Premise).
 
 ## Installation
 
