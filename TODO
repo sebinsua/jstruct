@@ -1,11 +1,9 @@
 - [ ] Read the tests and make sure that the descriptions are correct.
 - [ ] Write the extra tests from the TODOs.
-- [ ] Obj passed in may be value, or object or array.
-- [ ] See if I can reconfigure with a new Selector.
-- [ ] Clean readme.
-- [ ] Write an ES6 example.
 - [ ] Take a screenshot of the benefit.
 * * *
+- [ ] See if I can reconfigure with a new Selector.
+- [ ] Obj passed in may be value, or object or array.
 - [ ] Simplify the following TODO items and place them onto Github issues.
 - [ ] Allow paths with square brackets, aka array/filter/group items:
       See: https://github.com/sebinsua/jstruct/commit/f8642c87dfb9dc39477e1d59eaa34d92bfc24a49#diff-ed741defd3ce45bbae8fb3a3c3532ac9R42
