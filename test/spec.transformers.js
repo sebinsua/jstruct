@@ -5,35 +5,35 @@ var transformers = require('../src/transformers');
 
 // TODO: Test the behaviour of each of the transformers.
 
-describe('tranformers', function () {
+describe('tranformers', function() {
 
-  describe('#exists', function () {
+  describe('#exists', function() {
 
-    it('should exist', function () {
+    it('should exist', function() {
       expect(transformers.exist).to.be.defined;
     });
 
   });
 
-  describe('#first', function () {
+  describe('#first', function() {
 
-    it('should exist', function () {
+    it('should exist', function() {
       expect(transformers.first).to.be.defined;
     });
 
   });
 
-  describe('#isNotEmpty', function () {
+  describe('#isNotEmpty', function() {
 
-    it('should exist', function () {
+    it('should exist', function() {
       expect(transformers.isNotEmpty).to.be.defined;
     });
 
   });
 
-  describe('#defaultsTo', function () {
+  describe('#defaultsTo', function() {
 
-    it('should exist', function () {
+    it('should exist', function() {
       expect(transformers.defaultsTo).to.be.defined;
     });
 
