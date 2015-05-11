@@ -3,6 +3,8 @@
 
 var j = require('..');
 
+// TODO: Test j on its own or with a single value passed in is a function.
+
 describe('jstruct', function() {
 
   var data;
@@ -21,8 +23,6 @@ describe('jstruct', function() {
       ]
     };
   });
-
-  // TODO: Test j on its own or with a single value passed in is a function.
 
   describe('throws errors on bad formatting or object data', function() {
 
