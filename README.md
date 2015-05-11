@@ -7,7 +7,7 @@ Jstruct allows quick and easy JSON transformations through the use of a declarat
 import j, { sel } from 'jstruct';
 import { curry } from 'ramda';
 
-const prefix = curry((prefix, str) => prefix + str);
+const prefix = curry((pre, str) => pre + str);
 
 getAccount().then(j({
   id: 'account/id',
