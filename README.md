@@ -1,6 +1,8 @@
 # jstruct [![Build Status](https://travis-ci.org/sebinsua/jstruct.png)](https://travis-ci.org/sebinsua/jstruct) [![npm version](https://badge.fury.io/js/jstruct.svg)](https://npmjs.org/package/jstruct)
 > :bulb: Quick and easy JSON transformations.
 
+Note: the version on NPM is very out-of-date however a new release is imininent.
+
 Jstruct allows quick and easy JSON transformations through the use of a declarative JSON DSL.
 
 ```javascript
