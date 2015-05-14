@@ -66,13 +66,13 @@ describe('selector', function() {
     expect(percept).to.equal(null);
   });
 
-  it('will receive an error if I try to create a JsonPointer with an invalid path', function() {
+  it('will receive an error if I try to create a Selector with an invalid path', function() {
     var invalidPaths = ['', null, undefined, -12, 45.5];
 
     invalidPaths.forEach(function(path) {
       expect(function() {
         var selector = j.sel(path);
-      }).to.throw(Error, 'Invalid path specified');
+      }).to.throw(Error, 'Invalid path specified: ' + path);
     });
   });
 
