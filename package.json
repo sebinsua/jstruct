@@ -36,6 +36,8 @@
     "eslint": "^0.21.0",
     "mocha": "^2.2.4",
     "ramda-debug": "^0.1.2",
-    "rewire": "^2.3.3"
+    "rewire": "^2.3.3",
+    "sinon": "^1.14.1",
+    "sinon-chai": "^2.7.0"
   }
 }

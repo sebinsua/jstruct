@@ -5,7 +5,8 @@
   },
   "globals": {
     "expect": true,
-    "rewire": true
+    "rewire": true,
+    "sinon": true
   },
   "rules": {
     "quotes": [1, "single"],

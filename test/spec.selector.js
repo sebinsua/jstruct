@@ -82,8 +82,13 @@ describe('selector', function() {
     });
   });
 
-  xit('should execute the transformation function with the selectors value when it is passed in as the second argument', function () {
+  it('should execute the transformation function with the selectors value when it is passed in as the second argument', function () {
+    var spy = sinon.spy();
+    var selector = sel('deeply/nested/key', spy);
 
+    selector.get(object);
+
+    expect(spy).to.have.been.calledWith('You found me.');
   });
 
 });
