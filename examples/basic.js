@@ -1,6 +1,6 @@
 #!/usr/bin/env babel-node
 
-import j, { sel } from '..';
+import j, { sel, escape } from '..';
 import { curry } from 'ramda';
 
 function getAccount() {
@@ -26,6 +26,7 @@ const prefix = curry((pre, str) => pre + str);
 const format = j({
   id: 'account/id',
   name: 'account/name',
+  type: escape('human'),
   hasAddress: sel.isNotEmpty('account/address'),
   lastPaymentAmount: sel('account/paymentHistory[0]/amount', prefix('£'))
 });

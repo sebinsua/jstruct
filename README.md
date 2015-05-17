@@ -4,7 +4,7 @@
 Jstruct allows quick and easy JSON transformations through the use of a declarative JSON DSL.
 
 ```javascript
-import j, { sel } from 'jstruct';
+import j, { sel, escape } from 'jstruct';
 import { curry } from 'ramda';
 
 // ... getAccount() definition
@@ -13,6 +13,7 @@ const prefix = curry((pre, str) => pre + str);
 const format = j({
   id: 'account/id',
   name: 'account/name',
+  type: escape('human'),
   hasAddress: sel.isNotEmpty('account/address'),
   lastPaymentAmount: sel('account/paymentHistory[0]/amount', prefix('£'))
 });
@@ -67,23 +68,27 @@ It is also possible to pass in an array of selectors.
 
 ### Helpers
 
-On addition to `sel(selector, transformFn)` there are also special selectors that handle certain use cases.
+On addition to `sel(selector, transformFn)` there are also special use cases that are already handled by the library.
 
 These are:
 
-#### `exists(selector)`
+#### `escape(valueToBeEscaped)`
+
+You can use this if you need to be able to assign a value to the definition of the output and do not want it to select anything.
+
+#### `sel.exists(selector)`
 
 Returns `true` or `false` dependent on whether the value at the end of the selector is not `null` or `undefined`.
 
-#### `first(selectors)`
+#### `sel.first(selectors)`
 
 Returns the first value of the array returned by the selector(s). This is useful when you want the value to be the first value found within given an array of selectors.
 
-#### `isNotEmpty(selector)`
+#### `sel.isNotEmpty(selector)`
 
 Returns `true` or `false` dependent on whether the object at the end of the selector is empty or not.
 
-#### `defaultsTo(selector, defaultValue)`
+#### `sel.defaultsTo(selector, defaultValue)`
 
 Returns either the value found at the selector or the value passed in as the second argument.
 

@@ -6,13 +6,17 @@ var R = require('ramda');
 var makeSelector = require('./selector').makeSelector;
 
 var Selector = require('./selector').Selector;
+var EscapedValue = require('./escaped-value').EscapedValue;
+
+var isEscapedValue = R.is(EscapedValue);
 var isSelector = R.is(Selector);
 var isObjectLiteral = function isObject(v) {
   return R.is(Object, v) && v.constructor === Object;
 };
 
 var get = R.curry(function get(selector, obj) {
-  if (!isSelector(selector)) {
+  var isNotAlreadyWrapped = !isSelector(selector) && !isEscapedValue(selector);
+  if (isNotAlreadyWrapped) {
     selector = makeSelector(selector);
   }
 
