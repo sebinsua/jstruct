@@ -23,6 +23,7 @@ getAccount().then(format);
 // {
 //   id: 5,
 //   name: 'Seb',
+//   type: 'human',
 //   hasAddress: true,
 //   lastPaymentAmount: '£50'
 // }
