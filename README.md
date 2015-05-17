@@ -33,7 +33,35 @@ Converting between different data representations in JavaScript is easier than m
 
 ## Usage
 
-*Coming soon.*
+#### `j(definition, object)`
+
+This accepts two arguments: `definition`, the definition of the object that should be returned from the transformation, and `object` the data that should be transformed.
+
+A definition is a deep key-value object in which the values are all selector strings/instances - the former being converted into the latter on execution.
+
+This function is [curried by default](http://en.wikipedia.org/wiki/Currying). If you do not supply all of the arguments required for computation it will return a function with the arguments already supplied bound to it.
+
+This makes it very simple to create formatting functions that expect objects and return transformations of the objects passed in.
+
+e.g.
+
+```javascript
+[{ key: 1 }, { key: 2 }, { missesKey: 3 }].map(j({ keyExists: j.exists('key') }));
+// -> [ { keyExists: true }, { keyExists: true }, { keyExists: false } ]
+```
+
+#### `j.sel(selector[, transformationFn])`
+
+This creates an instance of `Selector` from a string. It may optionally have a transformation function passed into it with the following method signature `function (valueToBeTransformed) { return transformedValue; }`.
+
+Examples of valid selectors are:
+
+```
+a-selector
+a/deeply/nested/selector
+a/deeply/nested/array-item[5]
+array[0][1][2]
+```
 
 ## Installation
 ```shell

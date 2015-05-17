@@ -4,6 +4,7 @@ var look = require('ramda-debug');
 
 var selectorModule = rewire('../src/selector');
 var sel = selectorModule.makeSelector;
+var Selector = selectorModule.Selector;
 
 var oldR = selectorModule.__get__('R');
 var newR = look.wrap(oldR);
@@ -32,8 +33,9 @@ describe('selector', function() {
     ];
   });
 
-  xit('returns an instance of Selector', function () {
-
+  it('returns an instance of Selector', function () {
+    var selector = sel('some-selector');
+    expect(selector).to.be.an.instanceOf(Selector);
   });
 
   it('can select the value at a specific object key', function() {
