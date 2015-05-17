@@ -76,7 +76,7 @@ describe('selector', function() {
     invalidPaths.forEach(function(path) {
       expect(function() {
         var selector = sel(path);
-      }).to.throw(Error, 'Invalid path specified');
+      }).to.throw(Error, 'Invalid path specified: ' + path);
     });
   });
 

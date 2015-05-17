@@ -62,7 +62,7 @@ Selector.prototype.transformValue = function (value) {
 // The selector argument may be a string or an array of strings.
 function makeSelector(selector, transformFn) {
   if (!selector || !selector.length) {
-    throw new Error('Invalid path specified');
+    throw new Error('Invalid path specified: ' + selector);
   }
 
   return new Selector(selector, transformFn);
