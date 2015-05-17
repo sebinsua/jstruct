@@ -9,7 +9,6 @@ var transformers = require('./transformers');
 
 var sel = makeSelector;
 
-// TODO: Clean this up.
 for (var selectorKey in selectors) {
   sel[selectorKey] = selectors[selectorKey];
 }

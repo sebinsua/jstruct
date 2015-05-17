@@ -31,8 +31,11 @@
     "ramda": "^0.13.0"
   },
   "devDependencies": {
+    "babel": "^5.4.3",
     "chai": "^2.3.0",
     "eslint": "^0.21.0",
-    "mocha": "^2.2.4"
+    "mocha": "^2.2.4",
+    "ramda-debug": "^0.1.2",
+    "rewire": "^2.3.3"
   }
 }

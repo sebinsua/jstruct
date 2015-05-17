@@ -18,14 +18,16 @@ var get = R.curry(function get(selector, obj) {
 
   return selector.get(obj);
 });
+get.displayName = 'get';
 
-var transform = R.curry(function (fn, obj) {
+var transform = R.curry(function _transform(fn, obj) {
   return R.cond(
     [R.isArrayLike, R.map(transform(fn))],
     [isObjectLiteral, R.mapObj(transform(fn))],
     [R.T, fn]
   )(obj);
 });
+transform.displayName = 'transform';
 
 var deepPick = R.curry(function deepPick(def, obj) {
   var getValue = get(R.__, obj);
@@ -52,6 +54,7 @@ var j = R.curry(function j(def, obj) {
 
   return picker(obj);
 });
+j.displayName = 'jstruct';
 
 module.exports = j;
 module.exports.Selector = Selector;

@@ -1,14 +1,16 @@
 'use strict';
-/* eslint no-unused-vars: 0 */
 
-var j = require('..');
+var look = require('ramda-debug');
 
-// TODO: Test j on its own or with a single value passed in is a function.
+var j = rewire('../src/jstruct');
+
+var oldR = j.__get__('R');
+var newR = look.wrap(oldR);
+j.__set__('R', newR);
 
 describe('jstruct', function() {
 
   var data;
-
   beforeEach(function() {
     data = {
       numberOfFriends: 5,
@@ -22,6 +24,15 @@ describe('jstruct', function() {
         'lemon'
       ]
     };
+  });
+
+  it('should be a function', function () {
+    expect(j).to.be.a.function;
+  });
+
+  it('should return a formatting function if only the first argument is passed in', function () {
+    var format = j({ def: 'some-selector' });
+    expect(format).to.be.a.function;
   });
 
   describe('throws errors on bad formatting or object data', function() {

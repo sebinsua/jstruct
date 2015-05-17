@@ -4,10 +4,13 @@
     "mocha": true
   },
   "globals": {
-    "expect": true
+    "expect": true,
+    "rewire": true
   },
   "rules": {
     "quotes": [1, "single"],
-    "no-unused-expressions": 0
+    "no-unused-vars": 0,
+    "no-unused-expressions": 0,
+    "no-underscore-dangle": 0
   }
 }

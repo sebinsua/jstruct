@@ -1,11 +1,7 @@
 'use strict';
-/* eslint no-unused-vars: 0 */
 
 var transformers = require('../src/transformers'),
-  selectors = require('../src/selectors');
-
-// TODO: Test that the defaultsTo selector passes arguments into
-//       its tranformer.
+    selectors = require('../src/selectors');
 
 describe('selectors', function() {
 
@@ -16,6 +12,14 @@ describe('selectors', function() {
       it('#' + transformerKey, function() {
         expect(selectors[transformerKey]).to.exist;
       });
+
+    });
+
+  });
+
+  describe('#defaultsTo', function () {
+
+    xit('passes its arguments into its transformer', function () {
 
     });
 
