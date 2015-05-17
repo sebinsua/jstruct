@@ -63,6 +63,30 @@ a/deeply/nested/array-item[5]
 array[0][1][2]
 ```
 
+It is also possible to pass in an array of selectors.
+
+### Helpers
+
+On addition to `sel(selector, transformFn)` there are also special selectors that handle certain use cases.
+
+These are:
+
+#### `exists(selector)`
+
+Returns `true` or `false` dependent on whether the value at the end of the selector is not `null` or `undefined`.
+
+#### `first(selectors)`
+
+Returns the first value of the array returned by the selector(s). This is useful when you want the value to be the first value found within given an array of selectors.
+
+#### `isNotEmpty(selector)`
+
+Returns `true` or `false` dependent on whether the object at the end of the selector is empty or not.
+
+#### `defaultsTo(selector, defaultValue)`
+
+Returns either the value found at the selector or the value passed in as the second argument.
+
 ## Installation
 ```shell
 npm install [--save] jstruct;
