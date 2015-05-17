@@ -1,38 +1,19 @@
 # jstruct [![Build Status](https://travis-ci.org/sebinsua/jstruct.png)](https://travis-ci.org/sebinsua/jstruct) [![npm version](https://badge.fury.io/js/jstruct.svg)](https://npmjs.org/package/jstruct)
 > :bulb: Quick and easy JSON transformations.
 
-Note: the version on NPM is very out-of-date however a new release is imininent.
-
 Jstruct allows quick and easy JSON transformations through the use of a declarative JSON DSL.
 
 ```javascript
 import j, { sel } from 'jstruct';
 import { curry } from 'ramda';
 
-function getAccount() {
-  return new Promise((resolve, reject) => {
-    resolve({
-      account: {
-        id: 5,
-        name: 'Seb',
-        address: {
-          city: 'London',
-          country: 'United Kingdom'
-        },
-        paymentHistory: [
-          { amount: 50 },
-          { amount: 45 }
-        ]
-      }
-    });
-  });
-}
+// ... getAccount() definition
 
 const prefix = curry((pre, str) => pre + str);
 const format = j({
   id: 'account/id',
   name: 'account/name',
-  hasAddress: sel.exists('account/address'),
+  hasAddress: sel.isNotEmpty('account/address'),
   lastPaymentAmount: sel('account/paymentHistory[0]/amount', prefix('£'))
 });
 

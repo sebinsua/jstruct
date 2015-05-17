@@ -26,7 +26,7 @@ const prefix = curry((pre, str) => pre + str);
 const format = j({
   id: 'account/id',
   name: 'account/name',
-  hasAddress: sel.exists('account/address'),
+  hasAddress: sel.isNotEmpty('account/address'),
   lastPaymentAmount: sel('account/paymentHistory[0]/amount', prefix('£'))
 });
 
