@@ -33,6 +33,8 @@ getAccount().then(format);
 
 Converting between different data representations in JavaScript is easier than many languages because of the concise and declarative JSON. However, currently [both imperative and functional approaches create unnecessarily verbose code](https://github.com/sebinsua/jstruct/wiki/Premise).
 
+Jstruct [employs the visuospatial meaning of JSON to describe the structure of the data we wish to compute](https://twitter.com/sebinsua/status/598828999423438848).
+
 ## Usage
 
 #### `j(definition, object)`
