@@ -4,20 +4,22 @@
 var R = require('ramda');
 
 var makeSelector = require('./selector').makeSelector;
+var makeEscapedValue = require('./escaped-value').makeEscapedValue;
 
-var Selector = require('./selector').Selector;
-var EscapedValue = require('./escaped-value').EscapedValue;
-
-var isEscapedValue = R.is(EscapedValue);
-var isSelector = R.is(Selector);
+var isString = R.is(String);
+var isNumber = R.is(Number);
 var isObjectLiteral = function isObject(v) {
   return R.is(Object, v) && v.constructor === Object;
 };
+var isNotObjectOrArray = function isNotObjectOrArray(v) {
+  return !isObjectLiteral(v) && !R.isArrayLike(v);
+};
 
 var get = R.curry(function get(selector, obj) {
-  var isNotAlreadyWrapped = !isSelector(selector) && !isEscapedValue(selector);
-  if (isNotAlreadyWrapped) {
+  if (isString(selector)) {
     selector = makeSelector(selector);
+  } else if (isNumber(selector)) {
+    selector = makeEscapedValue(selector);
   }
 
   return selector.get(obj);
@@ -45,20 +47,19 @@ var deepPick = R.curry(function deepPick(def, obj) {
 // Use a selector on its own if you wish take in a
 // single string or array of strings.
 var j = R.curry(function j(def, obj) {
-  if (!isObjectLiteral(def)) {
-    throw new Error('Invalid format specified');
-  }
-  if (!isObjectLiteral(obj)) {
-    throw new Error('Invalid data specified');
+  if (def === null || obj === null) {
+    return null;
   }
 
-  var keys = R.keys(def) || [];
-
-  var picker = keys.length ? deepPick(def) : R.identity;
-
+  var picker;
+  if (isNotObjectOrArray(def)) {
+    picker = get(def);
+  } else {
+    var keys = R.keys(def) || [];
+    picker = keys.length ? deepPick(def) : R.identity;
+  }
   return picker(obj);
 });
 j.displayName = 'jstruct';
 
 module.exports = j;
-module.exports.Selector = Selector;

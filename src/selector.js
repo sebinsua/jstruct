@@ -12,7 +12,7 @@ function selectorToPath(selector, separator) {
     separator = separator || '/';
 
     // We need to handle square bracket array access.
-    selector = R.replace(/\[(\w*)\]/g, separator + '$1', selector);
+    selector = R.replace(/\[(\w*)\]/g, separator + '$1' + separator, selector);
 
     return selector.split(separator).filter(R.identity);
 }
@@ -39,13 +39,22 @@ Selector.prototype.get = function (obj) {
 };
 
 Selector.prototype.getValue = function (obj) {
+  var getAtPath = function getAtPath(path, o) {
+    // This is a temporary special case that
+    // eventually will require a rewrite of `R.path`.
+    if (path && path[0] === '$v') {
+      return o;
+    }
+    return R.path(path, o);
+  };
+
   var value = DEFAULT_VALUE;
   if (this.paths) {
     value = R.pipe(R.map(function (path) {
-      return R.path(path, obj);
+      return getAtPath(path, obj);
     }), R.filter(isNotNil))(this.paths);
   } else {
-    value = R.path(this.path, obj);
+    value = getAtPath(this.path, obj);
   }
 
   return value;

@@ -48,7 +48,7 @@ This makes it very simple to create formatting functions that expect objects and
 e.g.
 
 ```javascript
-[{ key: 1 }, { key: 2 }, { missesKey: 3 }].map(j({ keyExists: j.exists('key') }));
+[{ key: 1 }, { key: 2 }, { missesKey: 3 }].map(j({ keyExists: sel.exists('key') }));
 // -> [ { keyExists: true }, { keyExists: true }, { keyExists: false } ]
 ```
 
