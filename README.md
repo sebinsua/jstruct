@@ -41,7 +41,7 @@ Jstruct [employs the visuospatial meaning of JSON as its means of describing the
 
 This accepts two arguments: `definition`, the definition of the object that should be returned from the transformation, and `object` the data that should be transformed.
 
-A definition is a deep key-value object in which the values are all selector strings/instances - the former being converted into the latter on execution.
+A definition is a collection of selector strings/instances - the former being converted into the latter on execution. It can be a (deep) object/array or even just a single selector. 
 
 This function is [curried by default](http://en.wikipedia.org/wiki/Currying). If you do not supply all of the arguments required for computation it will return a function with the arguments already supplied bound to it.
 
