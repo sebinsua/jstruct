@@ -10,7 +10,12 @@ describe('module', function () {
 
   describe('should contain the following properties', function() {
 
-    Object.keys(j).forEach(function (propName) {
+    [
+      'displayName',
+      'escape',
+      'sel',
+      'trans'
+    ].forEach(function (propName) {
 
       it(propName, function() {
         expect(j[propName]).to.exist;
