@@ -28,12 +28,12 @@
     "unit": "./node_modules/.bin/mocha test/spec.*.js --require test/helpers.js"
   },
   "dependencies": {
-    "ramda": "^0.13.0"
+    "ramda": "^0.21.0"
   },
   "devDependencies": {
-    "babel": "^5.4.3",
-    "chai": "^2.3.0",
-    "eslint": "^0.21.0",
+    "babel": "^6.5.2",
+    "chai": "^3.5.0",
+    "eslint": "^2.10.2",
     "mocha": "^2.2.4",
     "ramda-debug": "^0.1.2",
     "rewire": "^2.3.3",

@@ -27,11 +27,11 @@ var get = R.curry(function get(selector, obj) {
 get.displayName = 'get';
 
 var transform = R.curry(function _transform(fn, obj) {
-  return R.cond(
+  return R.cond([
     [R.isArrayLike, R.map(transform(fn))],
-    [isObjectLiteral, R.mapObj(transform(fn))],
+    [isObjectLiteral, R.map(transform(fn))],
     [R.T, fn]
-  )(obj);
+  ])(obj);
 });
 transform.displayName = 'transform';
 

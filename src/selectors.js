@@ -6,7 +6,7 @@ var makeSelector = require('./selector').makeSelector;
 
 var transformers = require('./transformers');
 
-module.exports = R.mapObj(function (transformer) {
+module.exports = R.map(function (transformer) {
   return function (selector/*, ... */) {
     var otherArguments = R.tail(arguments);
     var t = otherArguments.length ? transformer.apply(transformers, otherArguments) : transformer;
